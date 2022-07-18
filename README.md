@@ -4,4 +4,4 @@ Description : An application which will take the bill Amount and cash given by t
 
 Tech Stack : React
 
-Live Project is [here](https://9ko4c8.csb.app/).
+Live Project is [here](https://mark10-cashregisterapp.netlify.app/).
