@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import Footer from "./components/Footer";
 import "./styles.css";
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
     let amountToBeReturned = cashAmount - billAmount;
     if (billAmount === "" || cashAmount === "") {
       return;
-    } else if (amountToBeReturned < 1) {
+    } else if (amountToBeReturned < 0) {
       setError("Do You Want To Wash Dishes !!!");
     } else {
       setError(false);
@@ -93,7 +94,7 @@ export default function App() {
           </table>
         )}
       </main>
-      <footer>Developed by Bilal</footer>
+      <Footer />
     </>
   );
 }

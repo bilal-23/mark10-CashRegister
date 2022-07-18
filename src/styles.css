@@ -21,6 +21,12 @@ html {
     font-size: 55%;
   }
 }
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
 body {
   font-family: "Poppins", sans-serif;
   color: var(--primary-color);
@@ -28,7 +34,7 @@ body {
   padding: 3rem 2rem;
 }
 .App {
-  min-height: 95vh;
+  min-height: 80vh;
 }
 .text-center {
   text-align: center;
@@ -129,16 +135,7 @@ input[type="number"] {
 .button:active {
   transform: translateY(-3px);
 }
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8rem;
-  color: #555;
-  font-weight: 600;
-  flex: 0;
-  margin: 3rem 0;
-}
+
 .notes-container {
   display: flex;
   flex-direction: column;
