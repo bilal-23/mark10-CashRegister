@@ -24,7 +24,11 @@ export default function App() {
     let amountToBeReturned = cashAmount - billAmount;
     if (billAmount === "" || cashAmount === "") {
       return;
-    } else if (amountToBeReturned < 0) {
+    }
+    else if (billAmount < 1) {
+      setError("No change for you!")
+    }
+    else if (amountToBeReturned < 0) {
       setError("Do You Want To Wash Dishes !!!");
     } else {
       setError(false);
@@ -54,11 +58,11 @@ export default function App() {
           <form onSubmit={formSubmitHandler} className="inputs-container">
             <div className="input-group">
               <label>Bill Amount :</label>
-              <input type="number" ref={billRef} />
+              <input type="number" ref={billRef} min="1" />
             </div>
             <div className="input-group">
               <label>Cash Given :</label>
-              <input type="number" ref={cashRef} />
+              <input type="number" ref={cashRef} min="1" />
             </div>
             <div className="btn-container">
               <button className="button">Check</button>
