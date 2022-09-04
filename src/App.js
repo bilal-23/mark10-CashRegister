@@ -7,6 +7,7 @@ export default function App() {
   const cashRef = useRef();
   const [notes, setNotes] = useState();
   const [error, setError] = useState(false);
+  const [active, setActive] = useState(false);
 
   function formSubmitHandler(e) {
     e.preventDefault();
@@ -23,6 +24,7 @@ export default function App() {
     const cashAmount = cashRef.current.value;
     let amountToBeReturned = cashAmount - billAmount;
     if (billAmount === "" || cashAmount === "") {
+      setError("Enter Valid Input");
       return;
     }
     else if (billAmount < 1) {
@@ -30,7 +32,11 @@ export default function App() {
     }
     else if (amountToBeReturned < 0) {
       setError("Do You Want To Wash Dishes !!!");
-    } else {
+    }
+    else if (amountToBeReturned === 0) {
+      setError("No Change To Return");
+    }
+    else {
       setError(false);
       changeToBeReturn.forEach((amt, index) => {
         const notes = Math.trunc(amountToBeReturned / amt.amount);
@@ -38,6 +44,15 @@ export default function App() {
         changeToBeReturn[index].notes = notes;
       });
       setNotes(changeToBeReturn);
+    }
+  }
+
+  function activeSecondInput(e) {
+    const billAmount = billRef.current.value;
+    if (billAmount) {
+      setActive(true);
+    } else {
+      setActive(false);
     }
   }
 
@@ -58,12 +73,12 @@ export default function App() {
           <form onSubmit={formSubmitHandler} className="inputs-container">
             <div className="input-group">
               <label>Bill Amount :</label>
-              <input type="number" ref={billRef} min="1" />
+              <input type="number" ref={billRef} min="1" onChange={activeSecondInput} />
             </div>
-            <div className="input-group">
+            {active && <div className="input-group">
               <label>Cash Given :</label>
               <input type="number" ref={cashRef} min="1" />
-            </div>
+            </div>}
             <div className="btn-container">
               <button className="button">Check</button>
             </div>
